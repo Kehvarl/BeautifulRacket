@@ -10,7 +10,12 @@
 (provide read-syntax)
 
 
+(require brag/support)
 (define (make-tokenizer port)
   (define (next-token)
-    )
+    (define bf-lexer
+      (lexer
+       [(char-set "><-.,+[]") lexeme]
+       [any-char (next-token)]))
+    (bf-lexer port))
   next-token)
