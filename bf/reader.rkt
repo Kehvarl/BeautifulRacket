@@ -2,7 +2,7 @@
 (require "parser.rkt")
 
 (define (read-syntax path port)
-  (define partse-tree (parse path (make-tokenizer port)))
+  (define parse-tree (parse path (make-tokenizer port)))
   (define module-datum `(module bf-mod "expander.rkt"
                           ,parse-tree))
   (datum->syntax #f module-datum))
