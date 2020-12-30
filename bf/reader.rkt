@@ -9,3 +9,8 @@
 
 (provide read-syntax)
 
+
+(define (make-tokenizer port)
+  (define (next-token)
+    )
+  next-token)
