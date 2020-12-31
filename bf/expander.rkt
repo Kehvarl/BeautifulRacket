@@ -24,7 +24,7 @@
 (provide bf-op)
 
 (define arr (make-vector 30000 0))
-(define pty 0)
+(define ptr 0)
 
 (define (current-byte) (vector-ref arr ptr))
 (define (set-current-byte! val) (vector-set! arr ptr val))
@@ -32,8 +32,8 @@
 (define (bf-next) (set! ptr (add1 ptr)))
 (define (bf-prev) (set! ptr (sub1 ptr)))
 
-(define (bf-inc) (set-current-byte! (add1 current-byte)))
-(define (bf-dec) (set-current-byte! (sub1 current-byte)))
+(define (bf-inc) (set-current-byte! (add1 (current-byte))))
+(define (bf-dec) (set-current-byte! (sub1 (current-byte))))
 
 (define (bf-out) (write-byte (current-byte)))
 (define (bf-in) (set-current-byte! (read-byte)))
