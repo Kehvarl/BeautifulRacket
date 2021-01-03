@@ -18,5 +18,5 @@
 
 (define-macro (jsonic-sexp SEXP-STR)
   (with-pattern ([SEXP-DATUM (format-datum '~a #'SEXP-STR)])
-    #'(jsexpr-string SEXP-DATUM)))
+    #'(jsexpr->string SEXP-DATUM)))
 (provide jsonic-sexp)
