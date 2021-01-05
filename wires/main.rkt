@@ -39,3 +39,14 @@
       (if (number? num-or-wire)
           num-or-wire
           (hash-ref! val-cache num-or-wire num-or-wire)))))
+
+(define (mod-16bit x) (modulo x 65536))
+(define-macro (define-16bit ID PROC-ID)
+  #'(define ID (compose1 mod-16bit PROC-ID)))
+
+(define-16bit AND bitwise-and)
+(define-16bit OR bitwise-ior)
+(define-16bit NOT bitwise-not)
+(define-16bit LSHIFT arithmetic-shift)
+(define-16bit (RSHIFT x y) (LSHIFT x (- y)))
+(provide AND OR NOT LSHIFT RSHIFT)
