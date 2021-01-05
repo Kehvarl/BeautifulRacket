@@ -13,3 +13,12 @@
   )
 
 
+(provide #%module-begin)
+
+
+(define-macro-cases wire
+  [(wire ARG -> ID) ...]
+  [(wire OP ARG -> ID) ...]
+  [(wire ARG1 OP ARG2 -> ID) ...]
+  [else ...])
+  
