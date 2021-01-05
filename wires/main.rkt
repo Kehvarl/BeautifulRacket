@@ -48,5 +48,5 @@
 (define-16bit OR bitwise-ior)
 (define-16bit NOT bitwise-not)
 (define-16bit LSHIFT arithmetic-shift)
-(define-16bit (RSHIFT x y) (LSHIFT x (- y)))
+(define (RSHIFT x y) (LSHIFT x (- y)))
 (provide AND OR NOT LSHIFT RSHIFT)
