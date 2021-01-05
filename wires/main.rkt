@@ -25,4 +25,17 @@
    #'(wire (OP (val ARG1) (val ARG2)) -> ID)]
   [else `'(void)])
 (provide wire)
-  
+
+(define-macro (define/display (ID) BODY)
+  #'(begin
+      (define (ID) BODY)
+      (module+ main
+        (displayln (format "~a: ~a" 'ID (ID))))))
+
+
+(define val
+  (let ([val-cache (make-hash)])
+    (lambda (num-or-wire)
+      (if (number? num-or-wire)
+          num-or-wire
+          (hash-ref! val-cache num-or-wire num-or-wire)))))
