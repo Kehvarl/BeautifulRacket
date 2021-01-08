@@ -9,3 +9,5 @@ b-print     : "print" [b-printable] (";" [b-printable])*
 b-printable : STRING | b-expr
 b-goto      : "goto" b-expr
 b-expr      :
+b-sum       :
+b-number    : INTEGER | DECIMAL
