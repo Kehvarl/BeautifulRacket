@@ -5,5 +5,7 @@ b-line-num  : INTEGER
 b-statement : b-end | b-print | b-goto
 b-rem       : REM
 b-end       : "end"
-b-print     :
+b-print     : "print" [b-printable] (";" [b-printable])*
+b-printable : STRING | b-expr
 b-goto      :
+b-expr      :
