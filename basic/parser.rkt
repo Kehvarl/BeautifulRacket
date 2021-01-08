@@ -8,6 +8,6 @@ b-end       : "end"
 b-print     : "print" [b-printable] (";" [b-printable])*
 b-printable : STRING | b-expr
 b-goto      : "goto" b-expr
-b-expr      :
+b-expr      : b-sum
 b-sum       : b-number ("+" b-number)*
 b-number    : INTEGER | DECIMAL
