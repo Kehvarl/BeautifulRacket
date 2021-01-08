@@ -7,5 +7,5 @@ b-rem       : REM
 b-end       : "end"
 b-print     : "print" [b-printable] (";" [b-printable])*
 b-printable : STRING | b-expr
-b-goto      :
+b-goto      : "goto" b-expr
 b-expr      :
