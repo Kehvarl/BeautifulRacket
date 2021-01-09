@@ -8,5 +8,7 @@
 
 (define-macro (b-module-begin (b-program LINE ...))
   #'(#%module-begin
-     LINE ...))
+     LINE ...
+     (define line-table ...)
+     (void (run line-table))))
 (provide (rename-out [b-module-begin #%module-begin]))
