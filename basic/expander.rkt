@@ -9,6 +9,7 @@
 (define-macro (b-module-begin (b-program LINE ...))
   #'(#%module-begin
      LINE ...
-     (define line-table ...)
+     (define line-table
+       (apply hasheqv (append (list NUM LINE-FUNC) ...)))
      (void (run line-table))))
 (provide (rename-out [b-module-begin #%module-begin]))
