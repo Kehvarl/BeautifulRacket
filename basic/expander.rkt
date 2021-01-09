@@ -20,4 +20,10 @@
 (define (run line-table)
   (define line-vec
     (list->vector (sort (hash-keys line-table) <)))
-  ...)
+  (for/fold ([line-idx 0])
+            ([i (in-naturals)]
+             #:break (>= line-idx (vector-length line-vec)))
+    (define line-num (vector-ref line-vec line-idx))
+    (define line-func (hash-ref line-table line-num))
+    (line-func)
+    (add1 line-idx)))
