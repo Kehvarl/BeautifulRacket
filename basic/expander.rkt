@@ -43,4 +43,13 @@
                 (format "error in line ~a: line ~a not found"
                         line-num clsv))))])
       (line-func)
-      (add1 line-idx))))
+      (add1 line-idx)))))
+
+(define (b-rem val) (void))
+(define (b-print . vals)
+  (displayln (string-append* (map ~a vals))))
+(define (b-sum . nums) (apply + nums))
+(define (b-expr expr)
+  (if (integer? expr) (inexact->exact expr) expr))
+
+(provide (matching-identifiers-out #rx"^b-" (all-defined-out))) 
