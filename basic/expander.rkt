@@ -6,3 +6,7 @@
     (syntax/loc caller-stx
                 (define (LINE-NUM) (void) STATEMENT ...))))
 
+(define-macro (b-module-begin (b-program LINE ...))
+  #'(#%module-begin
+     LINE ...))
+(provide (rename-out [b-module-begin #%module-begin]))
