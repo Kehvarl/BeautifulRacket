@@ -20,6 +20,9 @@
 (struct end-program-signal ())
 (struct change-line-signal (val))
 
+(define (b-end) (raise (end-program-signal)))
+(define (b-goto expr) (raise (change-line-signal expr)))
+
 (define (run line-table)
   (define line-vec
     (list->vector (sort (hash-keys line-table) <)))
