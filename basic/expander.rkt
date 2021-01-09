@@ -17,6 +17,9 @@
        (void (run line-table)))))
 (provide (rename-out [b-module-begin #%module-begin]))
 
+(struct end-program-signal ())
+(struct change-line-signal (val))
+
 (define (run line-table)
   (define line-vec
     (list->vector (sort (hash-keys line-table) <)))
