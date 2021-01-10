@@ -13,4 +13,3 @@
        (define line-table
          (apply hasheqv (append (list NUM LINE-FUNC) ...)))
        (void (run line-table)))))
-
