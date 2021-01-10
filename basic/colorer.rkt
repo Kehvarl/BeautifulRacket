@@ -12,5 +12,25 @@
       (basix-lexer port)))
   (match srcloc-tok
     [(? eof-object?) (values srcloc-tok 'eof #f #f #f)]
-    [else ...]))
+    [else
+     (match-define
+       (srcloc-token
+        (token-struct type val _ _ _ _ _)
+        (srcloc _ _ _ posn span)) srcloc-tok)
+     (define start posn)
+     (define end (+ start span))
+     (match-define (list cat paren)
+       (match type
+         ['STRING '(string #f)]
+         ['REM '(comment #f)]
+         ['ERROR '(error #f)]
+         [else (match val
+                 [(? number?) '(constant #f)]
+                 [(? symbol?) '(symbol #f)]
+                 [("(") '(parenthesis |(|)]
+                 [(")") '(parenthesis |)|)]
+                 [else '(no-color #f)])]))
+     (values val cat paren start end)]))
+         
+     ]))
 
