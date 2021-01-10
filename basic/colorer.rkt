@@ -10,5 +10,7 @@
   (define srcloc-tok
     (with-handlers ([exn:fail:read? handle-lexer-error])
       (basix-lexer port)))
-  ...)
+  (match srcloc-tok
+    [(? eof-object?) (values srcloc-tok 'eof #f #f #f)]
+    [else ...]))
 
