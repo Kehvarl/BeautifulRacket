@@ -9,7 +9,7 @@
       
   (define srcloc-tok
     (with-handlers ([exn:fail:read? handle-lexer-error])
-      (basix-lexer port)))
+      (basic-lexer port)))
   (match srcloc-tok
     [(? eof-object?) (values srcloc-tok 'eof #f #f #f)]
     [else
@@ -27,10 +27,8 @@
          [else (match val
                  [(? number?) '(constant #f)]
                  [(? symbol?) '(symbol #f)]
-                 [("(") '(parenthesis |(|)]
-                 [(")") '(parenthesis |)|)]
+                 ["(" '(parenthesis |(|)]
+                 [")" '(parenthesis |)|)]
                  [else '(no-color #f)])]))
      (values val cat paren start end)]))
-         
-     ]))
 
