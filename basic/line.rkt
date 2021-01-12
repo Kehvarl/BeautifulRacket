@@ -6,11 +6,11 @@
   (with-pattern ([LINE-NUM (prefix-id "line-" #'NUM
                                       #:source #'NUM)])
     (syntax/loc caller-stx
-      (define (LINE-NUM)
+      (define (LINE-NUM #:error [msg #f])
         (with-handlers
             ([line-error?
               (lambda (le) (handle-line-error NUM le))])
-          (void)
+          (when msg (raise-line-error msg))
           STATEMENT ...)))))
 
 (define (raise-line-error str)
