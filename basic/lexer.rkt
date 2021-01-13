@@ -3,7 +3,7 @@
 
 (define-lex-abbrev digits (:+ (char-set "0123456789")))
 
-(definelex-abbrev reserved-terms (:or "print" "goto" "end" "+" ":" ";" "let" "=" "input"))
+(define-lex-abbrev reserved-terms (:or "print" "goto" "end" "+" ":" ";" "let" "=" "input"))
 
 (define (basic-lexer port)
   (define the-lexer
@@ -13,7 +13,7 @@
      [(from/stop-before "rem" "\n") (token 'REM lexeme)]
      [reserved-terms (token lexeme lexeme)]
      [(:seq alphabetic (:* (:or alphabetic numeric "$")))
-      (token 'ID (string->sembol lexeme))]
+      (token 'ID (string->symbol lexeme))]
      [digits (token 'INTEGER (string->number lexeme))]
      [(:or (:seq (:? digits) "." digits)
            (:seq digits "."))
