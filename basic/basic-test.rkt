@@ -1,6 +1,6 @@
 #lang basic
-10 let x = "foo"
-20 y = 42
-30 let z = x
-40 input i
-50 print z ; y + y + 10 ; x ; i
+5 x = 24 : d = 4 : b = 2 : c = 3
+10 print x / d / b rem 3
+20 print x / (d / b) rem 12
+30 print b ^ c ^ b rem 64
+40 print b ^ (c ^ b) rem 512
