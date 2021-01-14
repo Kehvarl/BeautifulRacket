@@ -20,7 +20,7 @@
   [(_ "-" VAL) #'(- VAL)])
 
 (define-macro-cases b-expt
-  [(_VAL) #'VAL]
-  [(_ LEFT "^" RIGHT) $'(expt LEFT RIGHT)])
+  [(_ VAL) #'VAL]
+  [(_ LEFT "^" RIGHT) #'(expt LEFT RIGHT)])
 
  
