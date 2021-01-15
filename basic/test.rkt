@@ -1,4 +1,6 @@
-#lang basic/parse-only
-10 print "hello" : print "world"
-20 goto 9 + 10 + 11
-30 end
+#lang basic
+10 x = 3
+20 if x > 0 then print x else 5 * 10
+30 x = x - 1
+40 goto 20
+50 print "done"

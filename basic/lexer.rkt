@@ -3,9 +3,12 @@
 
 (define-lex-abbrev digits (:+ (char-set "0123456789")))
 
-(define-lex-abbrev reserved-terms (:or "print" "goto" "end" "+"
-                                       ":" ";" "let" "=" "input"
-                                       "-" "*" "/" "^" "mod" "(" ")"))
+(define-lex-abbrev reserved-terms (:or "print" "goto" "end"
+                                       ":" ";"
+                                       "let" "=" "input"
+                                       "+" "-" "*" "/" "^" "mod" "(" ")"
+                                       "if" "then" "else"
+                                       "<" ">" "and" "or" "not"))
 
 (define (basic-lexer port)
   (define the-lexer
