@@ -18,3 +18,16 @@
 (define-macro-cases b-not-expr
   [(_ VAL) #'VAL]
   [(_ "not" VAL) #'(if (nonzero? VAL) 0 1)])
+
+(define b= (compose1 bool->int =))
+(define b< (compose1 bool->int <))
+(define b> (compose1 bool->int >))
+(define b<> (compose1 bool->int not =))
+
+(define-macro-cases b-comp-expr
+  [(_ VAL) #'VAL]
+  [(_ LEFT "=" RIGHT) #'(b= LEFT RIGHT)]
+  [(_ LEFT "<" RIGHT) #'(b< LEFT RIGHT)]
+  [(_ LEFT ">" RIGHT) #'(b> LEFT RIGHT)]
+  [(_ LEFT "<>" RIGHT) #'(b<> LEFT RIGHT)]
+ 
