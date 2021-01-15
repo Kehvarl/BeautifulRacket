@@ -1,9 +1,9 @@
 #lang br
 (require "go.rkt")
-(provide b-if -b-or-expr b-and-expr b-not-expr b-comp-expr)
+(provide b-if b-or-expr b-and-expr b-not-expr b-comp-expr)
 
 (define (bool->int val) (if val 1 0))
-(define nonzero? (compose1 nor zero?))
+(define nonzero? (compose1 not zero?))
 
 (define-macro-cases b-or-expr
   [(_ VAL) #'VAL]
@@ -36,7 +36,7 @@
   [(_ COND-EXPR THEN-EXPR ELSE-EXPR)
    #'(let ([result (if (nonzero? COND-EXPR)
                        THEN-EXPR
-                       ELSE=EXPR)])
+                       ELSE-EXPR)])
       (when (exact-positive-integer? result)
         (b-goto result)))])
   
