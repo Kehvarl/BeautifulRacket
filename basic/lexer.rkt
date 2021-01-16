@@ -8,7 +8,9 @@
                                        "let" "=" "input"
                                        "+" "-" "*" "/" "^" "mod" "(" ")"
                                        "if" "then" "else"
-                                       "<" ">" "and" "or" "not"))
+                                       "<" ">" "and" "or" "not"
+                                       "gosub" "return"
+                                       "for" "to" "step" "next"))
 
 (define (basic-lexer port)
   (define the-lexer
