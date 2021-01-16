@@ -26,7 +26,7 @@
 
 (define-macro-cases b-for
   [(_ LOOP-ID START END) #'(b-for LOOP-ID START END 1)]
-  [(_ LOOP_ID START END STEP)
+  [(_ LOOP-ID START END STEP)
    #'(b-let LOOP-ID
             (let/cc loop-cc
               (hash-set! next-funcs
@@ -38,3 +38,13 @@
                                (hash-remove! next-funcs 'LOOP-ID))))
               START))])
                            
+(define (in-closed-interval? x start end)
+  ((if (< start end) <= >=) start x end))
+
+(define-macro (b-next LOOP-ID)
+  #'(begin
+      (unless (hash-has-key? next-funcs 'LOOP-ID)
+        (raise-line-error
+         (format "`next ~a` without for" 'LOOP-ID)))
+      (define func (hash-ref next-funcs 'LOOP-ID))
+      (func)))
