@@ -1,6 +1,6 @@
 #lang br
-(require "struct.rkt" "line.rkt")
-(provide b-end b-goto b-gosub b-return)
+(require "struct.rkt" "line.rkt" "misc.rkt")
+(provide b-end b-goto b-gosub b-return b-for b-next)
 
 
 (define (b-end)
@@ -21,3 +21,20 @@
     (raise-line-error "return without gosub"))
   (define top-cc (pop! return-ccs))
   (top-cc (void)))
+
+(define next-funcs (make-hasheq))
+
+(define-macro-cases b-for
+  [(_ LOOP-ID START END) #'(b-for LOOP-ID START END 1)]
+  [(_ LOOP_ID START END STEP)
+   #'(b-let LOOP-ID
+            (let/cc loop-cc
+              (hash-set! next-funcs
+                         'LOOP-ID
+                         (lambda ()
+                           (define next-val (+ LOOP-ID STEP))
+                           (if (next-val . in-closed-interval? . START END)
+                               (loop-cc next-val)
+                               (hash-remove! next-funcs 'LOOP-ID))))
+              START))])
+                           

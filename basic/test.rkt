@@ -1,6 +1,9 @@
 #lang basic
-10 x = 3
-20 if x > 0 then print x else 5 * 10
-30 x = x - 1
-40 goto 20
-50 print "done"
+10 gosub 50
+20 gosub 70
+30 print "third"
+40 end
+50 print "first"
+60 return
+70 print "second"
+80 return
