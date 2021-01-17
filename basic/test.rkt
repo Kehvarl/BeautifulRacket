@@ -1,7 +1,7 @@
 #lang basic
-10 x = 2 : y = 3 : z = 5
-20 print f(3, 4)
-30 print f(f(3, g(2)), 2)
-40 def f(x, y) = x * y * z
-50 def g(i) = i + i
-60 print y
+10 import [math/number-theory]
+20 print [nth-prime](15)
+30 print [prime?](24)
+40 import [racket/base]
+50 print [max](f(1), f(2), f(5), f(4))
+60 def f(x) = x + x
