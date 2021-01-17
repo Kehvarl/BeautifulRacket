@@ -11,7 +11,10 @@
                                        "<" ">" "and" "or" "not"
                                        "gosub" "return"
                                        "for" "to" "step" "next"
-                                       "def" ","))
+                                       "def" "," "import"))
+
+(define-lex-abbrev racket-id-kapu
+  (:or whitespace (char-set "()[]{}\",'`;#|\\")))
 
 (define (basic-lexer port)
   (define the-lexer
@@ -19,6 +22,9 @@
      ["\n" (token 'NEWLINE lexeme)]
      [whitespace (token lexeme #:skip? #t)]
      [(from/stop-before "rem" "\n") (token 'REM lexeme)]
+     [(:seq "[" (:+ (:~ racket-id-kapu)) "]")
+      (token 'RACKET-ID
+             (string->symbol (trim-ends "[" lexeme "]")))]
      [reserved-terms (token lexeme lexeme)]
      [(:seq alphabetic (:* (:or alphabetic numeric "$")))
       (token 'ID (string->symbol lexeme))]
