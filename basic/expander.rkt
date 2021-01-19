@@ -12,7 +12,7 @@
        [(IMPORT-NAME ...)
         (find-property 'b-import-name #'(LINE ...))]
        [(EXPORT-NAME ...)
-        (find-property 'b-export-name #'(LINE ...))])       )
+        (find-property 'b-export-name #'(LINE ...))])
     
     #'(#%module-begin
        (module configure-runtime br
@@ -26,7 +26,7 @@
          (apply hasheqv (append (list NUM LINE-FUNC) ...)))
        (parameterize
            ([current-output-port (basic-output-port)])
-       (void (run line-table)))))
+       (void (run line-table))))))
 
 (begin-for-syntax
   (require racket/list)
