@@ -11,7 +11,7 @@
                                        "<" ">" "and" "or" "not"
                                        "gosub" "return"
                                        "for" "to" "step" "next"
-                                       "def" "," "import"))
+                                       "def" "," "import" "export"))
 
 (define-lex-abbrev racket-id-kapu
   (:or whitespace (char-set "()[]{}\",'`;#|\\")))

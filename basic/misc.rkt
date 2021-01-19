@@ -1,5 +1,5 @@
 #lang br
-(provide b-rem b-print b-let b-input b-import)
+(provide b-rem b-print b-let b-input b-import b-export)
 
 
 (define (b-rem val) (void))
@@ -15,3 +15,5 @@
                 (or num str))))
 
 (define-macro (b-import NAME) #'(void))
+
+(define-macro (b-export NAME) #'(void))
