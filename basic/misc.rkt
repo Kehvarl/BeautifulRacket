@@ -15,3 +15,5 @@
                 (or num str))))
 
 (define-macro (b-import NAME) #'(void))
+
+(define-macro (b-export NAME) #'(void))
