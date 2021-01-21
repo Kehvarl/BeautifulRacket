@@ -14,7 +14,7 @@
        [(EXPORT-NAME ...)
         (find-property 'b-export-name #'(LINE ...))]
        [((SHELL-ID SHELL-IDX) ...)
-        (make-shell-ids-and-indx caller-stx)]
+        (make-shell-ids-and-idxs caller-stx)]
        [(UNIQUE-ID ...)
         (unique-ids
          (syntax->list #'(VAR-ID ... SHELL-ID ...)))])
@@ -45,11 +45,11 @@
   (require racket/list)
 
   (define (unique-ids stxs)
-    (remove-duplicates stxs #:ket syntax->datum))
+    (remove-duplicates stxs #:key syntax->datum))
 
   (define (find-property which line-stxs)
     (unique-ids
-     (for/list ([stx (in-list (stx-flatten linestxs))]
+     (for/list ([stx (in-list (stx-flatten line-stxs))]
                 #:when (syntax-property stx which))
        stx)))
 
