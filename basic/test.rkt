@@ -5,3 +5,4 @@
 40 import [racket/base]
 50 print [max](f(1), f(2), f(5), f(4))
 60 def f(x) = x + x
+60 REM test
